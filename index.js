@@ -62,7 +62,7 @@ app.post('/process', [tm.isLoggedIn], async function (req, res) {
   }
 });
 
-app.post('/fetch', [tm.isLoggedIn], function (req, res) {
+app.get('/fetch', [tm.isLoggedIn], function (req, res) {
   models.Data.findAll().then(d => {
     return res.json(d);
   }).catch(err => {
