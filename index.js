@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.post('/signup', [validate.email(), validate.password()], function (req, res) {
   var errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json(errors.array()[0].msg);
+    return res.status(400).json({ message: errors.array()[0].msg });
   } else {
     var input = req.body;
     return res.json({ token: hashpassword.generatetoken({ email: input.email, password: input.password }) });
